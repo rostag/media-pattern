@@ -228,7 +228,7 @@ function fileextMatch(str: string, strs: string[]) {
     return strs.some(s => str.toLowerCase().endsWith(s.toLowerCase()));
 }
 
-function sortFilesByAttributes(sortPattern: SortPattern = null, cleanup = false) {
+function sortFilesByAttributes(sortPattern: SortPattern = null, cleanup = false, writeFiles = false) {
     const attr = sortPattern.attrName;
     const filenames: string[] = [];
     fs.readdir(directoryPath, function (err, files) {
@@ -250,9 +250,12 @@ function sortFilesByAttributes(sortPattern: SortPattern = null, cleanup = false)
                 ? oldname.split('-X-')[oldname.split('-X-').length - 1]
                 : `${attr.substr(0, 3)}-${index.toString().padStart(3, '0')}-${mf[attr]}${mf[attr+'Text'].padStart(9, '_')}-X-${mf.filename}${mf.fileext}`;
             console.log('New name:', newname);
-            fs.rename(directoryPath + '/' + oldname, directoryPath + '/' + newname, function (e) {
-                if (e) console.log('Renaming error: ' + e);
-            });
+            
+            if (writeFiles) {
+                fs.rename(directoryPath + '/' + oldname, directoryPath + '/' + newname, function (e) {
+                    if (e) console.log('Renaming error: ' + e);
+                });
+            }
         })
     })
 };
@@ -282,7 +285,7 @@ console.clear();
 
 // sortFilesByAttributes(distSortPattern);
 
-restoreFileNames();
+// restoreFileNames();
 
 // TODO: Add multiple attrs and tolerance to each attr. Like taking videos of specific meaning and camera distance  
 // TODO: read file metadata: DURATION, EXIF etc.

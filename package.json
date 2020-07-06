@@ -4,6 +4,7 @@
   "description": "metadata-directed videos",
   "main": "director.js",
   "dependencies": {
+    "@types/node": "^14.0.14",
     "ffmetadata": "^1.6.0",
     "fluent-ffmpeg": "^2.1.2",
     "ts-node": "^8.10.2",
