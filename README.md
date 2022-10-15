@@ -1,5 +1,17 @@
 # media-pattern
 
+The idea is to semi-automate video composing by assigning each video fragment key characteristics, like:
+
+- Subject / meaning
+- Motion
+- Camera Position
+- Relative size
+- Coloring
+
+Each video fragment then can participate in rhythmical composition where key characteristics are used as phythm carriers medium.
+
+Example of ready work: [Fire Training](<https://www.youtube.com/watch?v=xcD3BLH0byE&t=30s>)
+
 ## Links on video-editing
 
 * https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
